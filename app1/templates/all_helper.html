@@ -1,0 +1,56 @@
+<!-- list_helpers.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Helpers</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+{% include "navbar.html" %}
+    <h1>List of Helpers</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Skills</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for helper in helpers %}
+            <tr>
+                <td>{{ helper.name }}</td>
+                <td>{{ helper.age }}</td>
+                <td>{{ helper.gender }}</td>
+                <td>
+                    <ul>
+                        {% for skill in helper.skills.all %}
+                        <li>{{ skill.name }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
